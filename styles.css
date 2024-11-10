@@ -1,0 +1,695 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.nav-links li {
+    margin-left: 1rem;
+}
+
+.nav-links a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0;
+    background: rgb(0, 0, 0);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    color: black;
+}
+
+.close-menu {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 250px;
+        background-color: #ffffff;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transform: translateX(100%);
+        padding-top: 2rem;
+        z-index: 1000;
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .close-menu {
+        display: block;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hero {
+    display: flex;
+    margin-top:60px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fadeInMoveDown 1s forwards;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.hero-image {
+    max-width: 50%;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-image {
+        max-width: 100%;
+        margin-top: 2rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeInMoveDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line on smaller screens */
+}
+
+.card {
+    background-color: white; /* White background */
+    border: 2px solid #f5f5f5; /* Smoky white border */
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    transition: transform 0.8 ease;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.explore-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: transparent;
+    color: rgb(56, 0, 0);
+    border: 2px solid rgb(63, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.explore-btn:hover {
+    background-color: rgb(50, 0, 0);
+    color: white;
+}
+
+/* Image container with animation */
+.image-container {
+    overflow: hidden; /* Hide overflowing parts of the image */
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.8s ease; /* Animate scaling of image */
+}
+
+.card:hover .image-container img {
+    transform: scale(1.1); /* Scale image when card is hovered */
+}
+
+
+/* Media Query for screens with a width of 480px or smaller */
+@media (max-width: 480px) {
+    .card-container {
+        flex-direction: column; /* Stack cards vertically */
+        gap: 15px; /* Reduce gap between cards */
+    }
+
+    .card {
+        width: 90%; /* Make the card width take up 90% of the container */
+    }
+}
+
+
+
+
+
+
+
+
+/* Keyframe Animation for fading in from the bottom */
+@keyframes fadeInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Initial State - Cards start off with opacity 0 and translateY */
+.card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: fadeInFromBottom 0.7s forwards;
+}
+
+/* Delay the animation for each card so they animate sequentially */
+.card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* When scrolled into view, add an 'active' class to trigger the animation */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card-container .card.active {
+    animation: fadeInFromBottom 0.7s forwards;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.banner {
+    
+    background-size: cover; /* Ensure the image covers the whole area */
+    background-position: center; /* Center the image */
+    display: flex;
+    border-radius: 30px;
+    height: 400px;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center; /* Center the content vertically */
+    text-align: center;
+    color: white; /* Text color white to contrast with background image */
+    padding: 0 20px;
+}
+
+.banner-content {
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+    border-radius: 10px;
+}
+
+.banner h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.banner p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.apply-btn {
+    background-color: transparent;
+    border: 2px solid #fff; /* White border for button */
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.apply-btn:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .banner h1 {
+        font-size: 2.5rem;
+    }
+
+    .banner p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .apply-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .banner h1 {
+        font-size: 2rem;
+    }
+
+    .banner p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .apply-btn {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+    }
+}
+/* Initial hidden state for animation */
+.banner {
+    transform: translateY(50px); /* Move the section down from the bottom */
+    transition: transform 1s ease; /* Animate only the vertical position */
+}
+
+/* When the section is visible and animated */
+.banner.visible {
+    transform: translateY(0); /* Move the section back to its normal position */
+}
+
+.banner-content {
+    max-width: 1400px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 30px;
+    margin-top: -30px ;
+    background: none; 
+   background-size: cover; /* Ensure the image covers the whole area */
+    background-position: center; /* Center the image *//* Add a transparent background for readability */
+    border-radius: 30px;
+}
+
+.apply-btn {
+    background-color: goldenrod;
+    border: 2px solid goldenrod;
+    color:rgb(0, 0, 0);
+    padding: 12px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: rgb(232, 173, 23);
+    color: #ffffff;
+    border-color: white;
+    border-radius: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .banner h1 {
+        font-size: 2.5rem;
+    }
+
+    .banner p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .apply-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner h1 {
+        font-size: 2rem;
+    }
+
+    .banner p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .apply-btn {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Initial styling for the newsletter section */
+.newsletter-section {
+    background:none;
+    margin-top: 30px;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px/* Full height for a centered effect */
+}
+
+.newsletter-content {
+    text-align: center;
+    max-width: 900px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-content h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.newsletter-content p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+
+
+.subscribe-btn:focus {
+    outline: none;
+}
+@media (max-width: 768px) {
+    .newsletter-content {
+        padding: 20px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form input,
+    .subscribe-btn {
+        width: 100%;
+        margin-top: 30px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General Footer Styling */
+.footer {
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+    padding: 40px 20px;
+    text-align: left;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.footer-column {
+    flex: 1; /* Distribute columns equally */
+    padding: 20px;
+    min-width: 250px; /* Ensures that columns have a minimum width */
+}
+
+.footer-column h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.footer-column p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #beaf0a; /* Change link color on hover */
+}
+
+/* Media Query for Small Screens (480px) */
+@media (max-width: 480px) {
+    .footer-container {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center;
+    }
+
+    .footer-column {
+        text-align: center; /* Center align content in each column */
+        margin-bottom: 20px; /* Add space between stacked columns */
+    }
+
+    .footer-column h3 {
+        font-size: 1.2rem; /* Adjust font size for small screens */
+    }
+
+    .footer-column p, .footer-column ul {
+        font-size: 0.9rem; /* Adjust font size for readability */
+    }
+}
